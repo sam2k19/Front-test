@@ -33,8 +33,10 @@
 
       if (!response.ok) throw new Error(data.message || data.error || 'Login failed');
 
-      if (window.SiriusSession && data.data) {
-        var payload = window.SiriusSession.createPayload(data.data, {
+      var sessionData = data.data || data;
+
+      if (window.SiriusSession && sessionData) {
+        var payload = window.SiriusSession.createPayload(sessionData, {
           activeRole: selectedAccount.toUpperCase(),
           email: identifier,
         });
