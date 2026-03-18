@@ -3,13 +3,14 @@
 
   var SiriusSession = {
     createPayload: function (data, extra) {
+      extra = extra || {};
       return {
         token: data.token || data.accessToken || '',
         userId: data.userId || (data.user && data.user._id) || '',
         activeRole: extra.activeRole || 'WORKER',
-        email: extra.email || '',
-        firstName: extra.firstName || '',
-        lastName: extra.lastName || '',
+        email: extra.email || (data.user && data.user.email) || '',
+        firstName: extra.firstName || (data.user && data.user.firstName) || '',
+        lastName: extra.lastName || (data.user && data.user.lastName) || '',
         expiresAt: Date.now() + 7 * 24 * 60 * 60 * 1000,
       };
     },
