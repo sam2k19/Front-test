@@ -329,13 +329,13 @@
         }
 
         const payload = {
-          firstName: form.businessName.value.trim(), // Use business name as first name
-          lastName: 'Merchant', // Default last name
-          businessName: form.businessName.value.trim(),
-          category,
-          email: form.merchantEmail.value.trim(),
-          password,
-        };
+firstName: document.getElementById('businessName').value.trim(),
+lastName: 'Merchant',
+businessName: document.getElementById('businessName').value.trim(),
+category: document.getElementById('businessCategory').value.trim(),
+email: document.getElementById('merchantEmail').value.trim(),
+password: document.getElementById('merchantPassword').value,
+};
 
         try {
           const response = await fetch('https://siriusjobs-backend.onrender.com/api/auth/register-merchant'), {
